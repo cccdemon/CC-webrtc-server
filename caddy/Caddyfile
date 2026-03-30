@@ -1,0 +1,33 @@
+{
+    email your@email.com
+    acme_dns cloudflare {
+        api_token {env.CF_API_KEY}
+    }
+}
+
+bla.yourdomain.ltd {
+    reverse_proxy http://mediamtx-jazzz:8889
+    tls {
+        dns cloudflare {
+            api_token {env.CF_API_KEY}
+        }
+    }
+}
+
+bla2.yourdomain.ltd {
+    reverse_proxy http://mediamtx-headwig:8889
+    tls {
+        dns cloudflare {
+            api_token {env.CF_API_KEY}
+        }
+    }
+}
+
+bla3.yourdomain.ltd {
+    reverse_proxy http://mediamtx-jericho:8889
+    tls {
+        dns cloudflare {
+            api_token {env.CF_API_KEY}
+        }
+    }
+}

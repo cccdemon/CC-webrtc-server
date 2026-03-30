@@ -1,0 +1,108 @@
+services:
+  caddy:
+    build: ./caddy
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - CF_API_KEY=your CF API Key
+      - CF_API_EMAIL=your Email
+
+  mediamtx-jazzz:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx-jazzz
+    restart: unless-stopped
+    ports:
+      - "8891:8891/udp"   # SRT
+      - "9991:9991/tcp"   # API
+      - "8181:8189/udp"   # WebRTC ICE/Media
+    environment:
+      - MTX_SRT=yes
+      - MTX_SRTADDRESS=:8891
+      - MTX_API=yes
+      - MTX_APIADDRESS=:9991
+      - MTX_RTSP=no
+      - MTX_RTMP=no
+      - MTX_HLS=no
+      - MTX_WEBRTC=yes
+      - MTX_WEBRTCADDRESS=:8889
+      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_PATHS_JAZZZ_GAME_SOURCE=publisher
+
+  mediamtx-headwig:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx-headwig
+    restart: unless-stopped
+    ports:
+      - "8892:8892/udp"   # SRT
+      - "9992:9992/tcp"   # API
+      - "8182:8189/udp"   # WebRTC ICE/Media
+    environment:
+      - MTX_SRT=yes
+      - MTX_SRTADDRESS=:8892
+      - MTX_API=yes
+      - MTX_APIADDRESS=:9992
+      - MTX_RTSP=no
+      - MTX_RTMP=no
+      - MTX_HLS=no
+      - MTX_WEBRTC=yes
+      - MTX_WEBRTCADDRESS=:8889
+      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_PATHS_HEADWIG_GAME_SOURCE=publisher
+
+  mediamtx-jericho:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx-jericho
+    restart: unless-stopped
+    ports:
+      - "8893:8893/udp"   # SRT
+      - "9993:9993/tcp"   # API
+      - "8183:8189/udp"   # WebRTC ICE/Media
+    environment:
+      - MTX_SRT=yes
+      - MTX_SRTADDRESS=:8893
+      - MTX_API=yes
+      - MTX_APIADDRESS=:9993
+      - MTX_RTSP=no
+      - MTX_RTMP=no
+      - MTX_HLS=no
+      - MTX_WEBRTC=yes
+      - MTX_WEBRTCADDRESS=:8889
+      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_PATHS_JERICHO_GAME_SOURCE=publisher
+
+  mediamtx-polder:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx-polder
+    restart: unless-stopped
+    ports:
+      - "8894:8894/udp"   # SRT
+      - "9994:9994/tcp"   # API
+      - "8184:8189/udp"   # WebRTC ICE/Media
+    environment:
+      - MTX_SRT=yes
+      - MTX_SRTADDRESS=:8894
+      - MTX_API=yes
+      - MTX_APIADDRESS=:9994
+      - MTX_RTSP=no
+      - MTX_RTMP=no
+      - MTX_HLS=no
+      - MTX_WEBRTC=yes
+      - MTX_WEBRTCADDRESS=:8889
+      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_PATHS_POLDER_GAME_SOURCE=publisher
+
+volumes:
+  caddy_data:
+  caddy_config:
