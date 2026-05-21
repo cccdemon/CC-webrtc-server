@@ -1,7 +1,7 @@
 services:
   caddy:
     build: ./caddy
-    container_name: caddy
+    container_name: rdoc-webrtc-caddy
     restart: unless-stopped
     ports:
       - "80:80"
