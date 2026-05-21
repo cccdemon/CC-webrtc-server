@@ -22,7 +22,7 @@ services:
     ports:
       - "8891:8891/udp"   # SRT
       - "9991:9991/tcp"   # API
-      - "8181:8189/udp"   # WebRTC ICE/Media
+      - "8181:8181/udp"   # WebRTC ICE/Media
     environment:
       - MTX_SRT=yes
       - MTX_SRTADDRESS=:8891
@@ -34,7 +34,7 @@ services:
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
-      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCLOCALUDPADDRESS=:8181
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_JAZZZ_GAME_SOURCE=publisher
       - MTX_PATHS_JAZZZ_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/jazzz_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/jazzz_game_webrtc
@@ -48,7 +48,7 @@ services:
     ports:
       - "8892:8892/udp"   # SRT
       - "9992:9992/tcp"   # API
-      - "8182:8189/udp"   # WebRTC ICE/Media
+      - "8182:8182/udp"   # WebRTC ICE/Media
     environment:
       - MTX_SRT=yes
       - MTX_SRTADDRESS=:8892
@@ -60,7 +60,7 @@ services:
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
-      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCLOCALUDPADDRESS=:8182
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_HEADWIG_GAME_SOURCE=publisher
       - MTX_PATHS_HEADWIG_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/headwig_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/headwig_game_webrtc
@@ -74,7 +74,7 @@ services:
     ports:
       - "8893:8893/udp"   # SRT
       - "9993:9993/tcp"   # API
-      - "8183:8189/udp"   # WebRTC ICE/Media
+      - "8183:8183/udp"   # WebRTC ICE/Media
     environment:
       - MTX_SRT=yes
       - MTX_SRTADDRESS=:8893
@@ -86,7 +86,7 @@ services:
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
-      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCLOCALUDPADDRESS=:8183
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_JERICHO_GAME_SOURCE=publisher
       - MTX_PATHS_JERICHO_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/jericho_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/jericho_game_webrtc
@@ -100,7 +100,7 @@ services:
     ports:
       - "8894:8894/udp"   # SRT
       - "9994:9994/tcp"   # API
-      - "8184:8189/udp"   # WebRTC ICE/Media
+      - "8184:8184/udp"   # WebRTC ICE/Media
     environment:
       - MTX_SRT=yes
       - MTX_SRTADDRESS=:8894
@@ -112,7 +112,7 @@ services:
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
-      - MTX_WEBRTCLOCALUDPADDRESS=:8189
+      - MTX_WEBRTCLOCALUDPADDRESS=:8184
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_POLDER_GAME_SOURCE=publisher
       - MTX_PATHS_POLDER_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/polder_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/polder_game_webrtc
