@@ -36,10 +36,8 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8181
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHS_JAZZZ_GAME_SOURCE=publisher
-      - MTX_PATHS_JAZZZ_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/jazzz_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/jazzz_game_webrtc
-      - MTX_PATHS_JAZZZ_GAME_RUNONREADYRESTART=yes
-      - MTX_PATHS_JAZZZ_GAME_WEBRTC_SOURCE=publisher
+      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v copy -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
+      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
   mediamtx-headwig:
     image: bluenviron/mediamtx:latest-ffmpeg
@@ -62,10 +60,8 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8182
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHS_HEADWIG_GAME_SOURCE=publisher
-      - MTX_PATHS_HEADWIG_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/headwig_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/headwig_game_webrtc
-      - MTX_PATHS_HEADWIG_GAME_RUNONREADYRESTART=yes
-      - MTX_PATHS_HEADWIG_GAME_WEBRTC_SOURCE=publisher
+      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v copy -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
+      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
   mediamtx-jericho:
     image: bluenviron/mediamtx:latest-ffmpeg
@@ -88,10 +84,8 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8183
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHS_JERICHO_GAME_SOURCE=publisher
-      - MTX_PATHS_JERICHO_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/jericho_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/jericho_game_webrtc
-      - MTX_PATHS_JERICHO_GAME_RUNONREADYRESTART=yes
-      - MTX_PATHS_JERICHO_GAME_WEBRTC_SOURCE=publisher
+      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v copy -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
+      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
   mediamtx-polder:
     image: bluenviron/mediamtx:latest-ffmpeg
@@ -114,10 +108,8 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8184
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHS_POLDER_GAME_SOURCE=publisher
-      - MTX_PATHS_POLDER_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/polder_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/polder_game_webrtc
-      - MTX_PATHS_POLDER_GAME_RUNONREADYRESTART=yes
-      - MTX_PATHS_POLDER_GAME_WEBRTC_SOURCE=publisher
+      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v copy -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
+      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
 volumes:
   caddy_data:
