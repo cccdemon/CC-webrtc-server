@@ -5,7 +5,7 @@
     }
 }
 
-bla.yourdomain.ltd {
+jazzz.streaming.raumdock.org {
     reverse_proxy http://mediamtx-jazzz:8889
     tls {
         dns cloudflare {
@@ -14,7 +14,7 @@ bla.yourdomain.ltd {
     }
 }
 
-bla2.yourdomain.ltd {
+headwig.streaming.raumdock.org {
     reverse_proxy http://mediamtx-headwig:8889
     tls {
         dns cloudflare {
@@ -23,7 +23,7 @@ bla2.yourdomain.ltd {
     }
 }
 
-bla3.yourdomain.ltd {
+jericho.streaming.raumdock.org {
     reverse_proxy http://mediamtx-jericho:8889
     tls {
         dns cloudflare {
