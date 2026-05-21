@@ -16,7 +16,7 @@ services:
       - CF_API_EMAIL=your Email
 
   mediamtx-jazzz:
-    image: bluenviron/mediamtx:latest
+    image: bluenviron/mediamtx:latest-ffmpeg
     container_name: mediamtx-jazzz
     restart: unless-stopped
     ports:
@@ -28,17 +28,21 @@ services:
       - MTX_SRTADDRESS=:8891
       - MTX_API=yes
       - MTX_APIADDRESS=:9991
-      - MTX_RTSP=no
+      - MTX_RTSP=yes
+      - MTX_RTSPADDRESS=:8554
       - MTX_RTMP=no
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8189
-      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_JAZZZ_GAME_SOURCE=publisher
+      - MTX_PATHS_JAZZZ_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/jazzz_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/jazzz_game_webrtc
+      - MTX_PATHS_JAZZZ_GAME_RUNONREADYRESTART=yes
+      - MTX_PATHS_JAZZZ_GAME_WEBRTC_SOURCE=publisher
 
   mediamtx-headwig:
-    image: bluenviron/mediamtx:latest
+    image: bluenviron/mediamtx:latest-ffmpeg
     container_name: mediamtx-headwig
     restart: unless-stopped
     ports:
@@ -50,17 +54,21 @@ services:
       - MTX_SRTADDRESS=:8892
       - MTX_API=yes
       - MTX_APIADDRESS=:9992
-      - MTX_RTSP=no
+      - MTX_RTSP=yes
+      - MTX_RTSPADDRESS=:8554
       - MTX_RTMP=no
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8189
-      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_HEADWIG_GAME_SOURCE=publisher
+      - MTX_PATHS_HEADWIG_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/headwig_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/headwig_game_webrtc
+      - MTX_PATHS_HEADWIG_GAME_RUNONREADYRESTART=yes
+      - MTX_PATHS_HEADWIG_GAME_WEBRTC_SOURCE=publisher
 
   mediamtx-jericho:
-    image: bluenviron/mediamtx:latest
+    image: bluenviron/mediamtx:latest-ffmpeg
     container_name: mediamtx-jericho
     restart: unless-stopped
     ports:
@@ -72,17 +80,21 @@ services:
       - MTX_SRTADDRESS=:8893
       - MTX_API=yes
       - MTX_APIADDRESS=:9993
-      - MTX_RTSP=no
+      - MTX_RTSP=yes
+      - MTX_RTSPADDRESS=:8554
       - MTX_RTMP=no
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8189
-      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_JERICHO_GAME_SOURCE=publisher
+      - MTX_PATHS_JERICHO_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/jericho_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/jericho_game_webrtc
+      - MTX_PATHS_JERICHO_GAME_RUNONREADYRESTART=yes
+      - MTX_PATHS_JERICHO_GAME_WEBRTC_SOURCE=publisher
 
   mediamtx-polder:
-    image: bluenviron/mediamtx:latest
+    image: bluenviron/mediamtx:latest-ffmpeg
     container_name: mediamtx-polder
     restart: unless-stopped
     ports:
@@ -94,14 +106,18 @@ services:
       - MTX_SRTADDRESS=:8894
       - MTX_API=yes
       - MTX_APIADDRESS=:9994
-      - MTX_RTSP=no
+      - MTX_RTSP=yes
+      - MTX_RTSPADDRESS=:8554
       - MTX_RTMP=no
       - MTX_HLS=no
       - MTX_WEBRTC=yes
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8189
-      - MTX_WEBRTCADDITIONALHOUSES=85.215.253.135
+      - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
       - MTX_PATHS_POLDER_GAME_SOURCE=publisher
+      - MTX_PATHS_POLDER_GAME_RUNONREADY=ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i rtsp://127.0.0.1:8554/polder_game -c:v copy -af aresample=async=1000:first_pts=0,asetpts=N/SR/TB -c:a libopus -b:a 128k -ar 48000 -ac 2 -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 rtsp://127.0.0.1:8554/polder_game_webrtc
+      - MTX_PATHS_POLDER_GAME_RUNONREADYRESTART=yes
+      - MTX_PATHS_POLDER_GAME_WEBRTC_SOURCE=publisher
 
 volumes:
   caddy_data:
