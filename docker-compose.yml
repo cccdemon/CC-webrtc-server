@@ -36,8 +36,6 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8181
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v libx264 -preset veryfast -tune zerolatency -profile:v baseline -pix_fmt yuv420p -x264-params sliced-threads=0 -g 60 -bf 0 -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
-      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
   mediamtx-headwig:
     image: bluenviron/mediamtx:latest-ffmpeg
@@ -60,8 +58,6 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8182
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v libx264 -preset veryfast -tune zerolatency -profile:v baseline -pix_fmt yuv420p -x264-params sliced-threads=0 -g 60 -bf 0 -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
-      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
   mediamtx-jericho:
     image: bluenviron/mediamtx:latest-ffmpeg
@@ -84,8 +80,6 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8183
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v libx264 -preset veryfast -tune zerolatency -profile:v baseline -pix_fmt yuv420p -x264-params sliced-threads=0 -g 60 -bf 0 -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
-      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
   mediamtx-polder:
     image: bluenviron/mediamtx:latest-ffmpeg
@@ -108,8 +102,6 @@ services:
       - MTX_WEBRTCADDRESS=:8889
       - MTX_WEBRTCLOCALUDPADDRESS=:8184
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
-      - MTX_PATHDEFAULTS_RUNONREADY=sh -c 'case "$$MTX_PATH" in *_webrtc) exit 0;; esac; exec ffmpeg -hide_banner -loglevel warning -fflags +genpts -rtsp_transport tcp -i "rtsp://127.0.0.1:8554/$$MTX_PATH" -c:v libx264 -preset veryfast -tune zerolatency -profile:v baseline -pix_fmt yuv420p -x264-params sliced-threads=0 -g 60 -bf 0 -c:a copy -max_interleave_delta 0 -muxdelay 0 -muxpreload 0 -f rtsp -rtsp_transport tcp -pkt_size 1200 "rtsp://127.0.0.1:8554/$${MTX_PATH}_webrtc"'
-      - MTX_PATHDEFAULTS_RUNONREADYRESTART=yes
 
 volumes:
   caddy_data:
