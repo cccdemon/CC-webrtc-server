@@ -103,6 +103,28 @@ services:
       - MTX_WEBRTCLOCALUDPADDRESS=:8184
       - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
 
+  mediamtx-headlesschris:
+    image: bluenviron/mediamtx:latest-ffmpeg
+    container_name: mediamtx-headlesschris
+    restart: unless-stopped
+    ports:
+      - "8895:8895/udp"   # SRT
+      - "9995:9995/tcp"   # API
+      - "8185:8185/udp"   # WebRTC ICE/Media
+    environment:
+      - MTX_SRT=yes
+      - MTX_SRTADDRESS=:8895
+      - MTX_API=yes
+      - MTX_APIADDRESS=:9995
+      - MTX_RTSP=yes
+      - MTX_RTSPADDRESS=:8554
+      - MTX_RTMP=no
+      - MTX_HLS=no
+      - MTX_WEBRTC=yes
+      - MTX_WEBRTCADDRESS=:8889
+      - MTX_WEBRTCLOCALUDPADDRESS=:8185
+      - MTX_WEBRTCADDITIONALHOSTS=85.215.253.135
+
 volumes:
   caddy_data:
   caddy_config:

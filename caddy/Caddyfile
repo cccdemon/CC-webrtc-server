@@ -31,3 +31,12 @@ jericho.streaming.raumdock.org {
         }
     }
 }
+
+headlesschris.streaming.raumdock.org {
+    reverse_proxy http://mediamtx-headlesschris:8889
+    tls {
+        dns cloudflare {
+            api_token {env.CF_API_KEY}
+        }
+    }
+}
